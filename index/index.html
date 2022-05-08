@@ -6,11 +6,9 @@
         <title>Path Of Yggdrasil</title>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <link rel="stylesheet" type="text/css" href="../css/tree.css">
-        <link rel="stylesheet" href="../asset/font/font-awesome/css/fontawesome.min.css">
-        <link rel="stylesheet" href="../asset/font/firacode/fira_code.css">
-        <script src="../js/tree.js"></script>
-        <script src="../js/treeitem.js"></script>
-        <script src="../js/treeitemClick.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/me.css">
+        <link rel="stylesheet" type="text/css" href="../asset/font/font-awesome/css/fontawesome.min.css">
+        <link rel="stylesheet" type="text/css" href="../asset/font/firacode/fira_code.css">
     </head>
     <body>
         <ul class="navbar">
@@ -19,23 +17,29 @@
             <li ><a href="https://github.com/Fatmeat-RP">Github</a>
             <li ><a href="contacts.html">Contacts</a>
         </ul>
+    <div class="me">
         <h1>Welcome to Path of Yggdrasil</h1>
-        <p class="me">
+        <p>
             <h2>Qui suis'je</h2>
             <div id="line_break"></div>
                 Bonjour, je m'appelle fatmeat, je suis programmer, developpeur et game designer.<br/>
                 me specialisation est surtout dans le programmation graphique et le systeme UNIX, j'ai commencer l'informatique a mes 21 ans en 2021 a l'ecole 42 lyon.<br/>
                 j'ai decider de me specialiser dans la programmation bas niveau (notament en <a href="https://fr.wikipedia.org/wiki/C_(langage)">C</a>).
         </p>
-        <p class="belief">
+        <p>
             <h2>Mes valeurs</h2>
             <div id="line_break"></div>
                 Je suis partisan de l'open source dans la plupars de mes projets.<br/>
                 Une erreur ne fais un mauvais programmer, seul un programmer qui essai fais des erreurs.<br/>
                 Je recherche toujours a m'ameliorer et developper de nouvelle capaciter, apprendre de nouvelle choses.
         </p>
+    </div>
+    <div>
         <h2>Ma norme de code</h2>
         <p class="directory">
+            <script src="../js/tree.js"></script>
+            <script src="../js/treeitem.js"></script>
+            <script src="../js/treeitemClick.js"></script>
             <h3 id="tree_label">
                 File Viewer
             </h3>
@@ -81,10 +85,13 @@
                 </label>
             </p>
         </p>
+    </div>
+    <div class="llst_code">
         <p>This is a simple linked list test(their could be error, i didn't test it) :</p>
-        <pre>
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+        <pre classe="prettyprint">
             <h3>header.h</h3>
-            <code class="header">
+            <code class="prettyprint">
 /*myheaderhear*/
 
 #ifndef HEADER_H
@@ -127,7 +134,7 @@ void            llst_free(t_linked_list *llst);
 
             </code>
             <h3>llst.c</h3>
-            <code class="llst">
+            <code class="prettyprint">
 /*myheaderhear*/
 /*i can't use chevron here because html*/
 #include "header.h"
@@ -199,7 +206,7 @@ void    llst_free(t_linked_list *llst)
 
             </code>
             <h3>main.c</h3>
-            <code class="main">
+            <code class="prettyprint">
 /*myheaderhear*/
 /*i can't use chevron here because html*/
 #include "header.h"
@@ -236,7 +243,7 @@ int main(int ac, char **av)
 
             </code>
             <h3>Makefile</h3>
-            <code class="Makefile">
+            <code class="prettyprint">
 /*myheaderhear*/
 
 NAME = linked_list_test
@@ -271,5 +278,6 @@ re : fclean all
 
             </code>
         </pre>
+    </div>
     </body>
 </html>

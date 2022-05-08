@@ -1,0 +1,20 @@
+p.me a:active {
+    text-decoration: none;
+    color: #eb3b7e;
+}
+
+p.me a:visited {
+    text-decoration: none;
+}
+
+p.me a:link {
+    text-decoration: none;
+}
+
+div.llst_code pre code {
+    background-color: #2e2e2e;
+    border: 1px solid azure;
+    display: block;
+    color: #d6d6d6;
+    padding: 20px;
+}

@@ -1,0 +1,27 @@
+ul.contact {
+    list-style-type: none;
+    width: 9em;
+}
+
+ul.contact li a {
+    font-family: "Fira Code";
+    font-weight: 600;
+    font-size: 16px;
+    background: rgba(102, 226, 248, 0.822);
+    margin: 0.5em 0;
+    padding: 0.3em;
+    display: block;
+    color: #ff00b3;
+    text-decoration: none;
+    border-right: 1em solid rgb(43, 225, 238)
+}
+
+ul.contact li:hover a {
+    border-right: 1em solid rgba(68, 0, 124, 0.63);
+    background: rgba(201, 0, 241, 0.452);
+    color: rgb(0, 204, 255);
+}
+
+ul.other {
+    list-style-type: none;
+}
