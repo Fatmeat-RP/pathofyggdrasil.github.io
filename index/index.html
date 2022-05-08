@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8">
+        <title>Path Of Yggdrasil</title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" type="text/css" href="../css/tree.css">
+        <link rel="stylesheet" href="../asset/font/font-awesome/css/fontawesome.min.css">
+        <link rel="stylesheet" href="../asset/font/firacode/fira_code.css">
+        <script src="../js/tree.js"></script>
+        <script src="../js/treeitem.js"></script>
+        <script src="../js/treeitemClick.js"></script>
+    </head>
+    <body>
+        <ul class="navbar">
+            <li ><a href="index.html">Accueil</a>
+            <li ><a href="games.html">Games </a>
+            <li ><a href="https://github.com/Fatmeat-RP">Github</a>
+            <li ><a href="contacts.html">Contacts</a>
+        </ul>
+        <h1>Welcome to Path of Yggdrasil</h1>
+        <p class="me">
+            <h2>Qui suis'je</h2>
+            <div id="line_break"></div>
+                Bonjour, je m'appelle fatmeat, je suis programmer, developpeur et game designer.<br/>
+                me specialisation est surtout dans le programmation graphique et le systeme UNIX, j'ai commencer l'informatique a mes 21 ans en 2021 a l'ecole 42 lyon.<br/>
+                j'ai decider de me specialiser dans la programmation bas niveau (notament en <a href="https://fr.wikipedia.org/wiki/C_(langage)">C</a>).
+        </p>
+        <p class="belief">
+            <h2>Mes valeurs</h2>
+            <div id="line_break"></div>
+                Je suis partisan de l'open source dans la plupars de mes projets.<br/>
+                Une erreur ne fais un mauvais programmer, seul un programmer qui essai fais des erreurs.<br/>
+                Je recherche toujours a m'ameliorer et developper de nouvelle capaciter, apprendre de nouvelle choses.
+        </p>
+        <h2>Ma norme de code</h2>
+        <p class="directory">
+            <h3 id="tree_label">
+                File Viewer
+            </h3>
+            <ul role="tree" aria-labelledby="tree_label">
+                <li role="treeitem" aria-expanded="false">
+                    <span>
+                        llst
+                    </span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false">
+                            <span>
+                                includes
+                            </span>
+                            <ul role="group">
+                                <li role="treeitem" class="doc">
+                                    header.h
+                                </li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" aria-expanded="false">
+                            <span>
+                                srcs
+                            </span>
+                            <ul role="group">
+                                <li role="treeitem" class="doc">
+                                    llst.c
+                                </li>
+                                <li role="treeitem" class="doc">
+                                    main.c
+                                </li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="doc">
+                            Makefile
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                <label>
+                    File or Folder Selected:
+                    <input id="last_action" type="text" size="15" readonly="">
+                </label>
+            </p>
+        </p>
+        <p>This is a simple linked list test(their could be error, i didn't test it) :</p>
+        <pre>
+            <h3>header.h</h3>
+            <code class="header">
+/*myheaderhear*/
+
+#ifndef HEADER_H
+# define HEADER_H
+
+# ifndef BUFFER_SIZE
+#   define BUFFER_SIZE 8
+# endif
+/*redefining size_t in case we are not in c99 or later standard*/
+# ifndef size_t
+    typedef unsigned long   size_t;
+# endif
+
+typedef struct s_node t_node;
+typedef struct s_linked_list    t_linked_list;
+
+/*this is a structure used as a node in a linked list*/
+struct s_node
+{
+    void        *elem;
+    t_node      *prev;
+    t_node      *next;
+};
+
+/*this is my control structure for a t_struct linked_list*/
+struct s_linked_list
+{
+    t_struct    *first;
+    t_struct    *iterator;
+    size_t      size;
+};
+
+t_linked_list   *init_linkedlist(void);
+t_node          *init_node(void *elem);
+int             node_addback(t_linked_list *llst, t_node *new_node);
+size_t          list_last_node(llst);
+void            llst_free(t_linked_list *llst);
+
+#endif
+
+            </code>
+            <h3>llst.c</h3>
+            <code class="llst">
+/*myheaderhear*/
+/*i can't use chevron here because html*/
+#include "header.h"
+
+void    init_linkedlist(t_linked_list *llst);
+{
+    llst = (t_linked_list *)malloc(sizeof(t_linked_list *));
+    if (llst)
+    {
+        llst->first = NULL;
+        llst->iterator = NULL;
+        llst->size = 0;
+    }
+    return (llst);
+}
+
+t_node  *init_node(void *elem);
+{
+    t_node *node;
+
+    node = (t_node *)malloc(sizeof(t_node *));
+    if (node)
+    {
+        node->elem = elem;
+        node->next = NULL;
+        node->prev = NULL;
+    }
+    return (node);
+}
+
+int node_addback(t_linked_list *llst, t_node *new_node)
+{
+    if (!t_node)
+    {
+        llst_free(llst);
+        return (-1);
+    }
+    list_last_node(llst);
+    llst->iter->next = new_node;
+    new_node->prev = llst->iter;
+    llst->size++;
+    return (0);
+}
+
+size_t  list_last_node(llst)
+{
+    size_t  i;
+    
+    i = 0;
+    llst->iter = llst->first;
+    while (llst->iter->next != NULL)
+    {
+        llst->iter = llst->iter->next;
+        i++;
+    }
+    return (i);
+}
+
+void    llst_free(t_linked_list *llst)
+{
+    while (llst->first)
+    {
+        llst->iter = llst->first;
+        llst->first = llst->first->next;
+        free(llst->iter);
+    }
+    free(llst);
+}
+
+            </code>
+            <h3>main.c</h3>
+            <code class="main">
+/*myheaderhear*/
+/*i can't use chevron here because html*/
+#include "header.h"
+#include "unistd.h"
+#include "string.h"
+
+int main(int ac, char **av)
+{
+    size_t          i;
+    t_linked_list   *llst;/*linked list control structure*/
+
+    i = 1;
+    llst = init_linkedlist();
+    while (i < ac)
+    {
+        write(1, av[i], strlen(av[i]));/*this is ok to use strlen because an arguments can't be null*/
+        if (node_addback(llst, init_node(av[i])))
+        {
+            write(2, "Allocation Error\n", 17);
+            llst_free(llst);
+            return (-1)
+        }
+        i++;
+    }
+    llst->iter = llst->first;
+    while (llst->iter)
+	{
+		write(1, llst->iter->elem, strlen(llst->iter->elem));
+		llst->iter = llst->iter->next;
+	}
+    llst_free(llst);
+    return (0);
+}
+
+            </code>
+            <h3>Makefile</h3>
+            <code class="Makefile">
+/*myheaderhear*/
+
+NAME = linked_list_test
+
+SRCSDIR = ./srcs/
+
+SRCS = \
+    $(SRCSDIR)main.c \
+    $(SRCSDIR)llst.c \
+
+OBJS = ${SRCS:.c=.o}
+
+CC = gcc
+
+CFLAGS = -Wall -Wextra -Werror
+
+OBJSDIR = ./objs/
+
+OBJS = $(SRCS:$(SRCSDIR)%.c=$(OBJSDIR)%.o)
+
+${NAME} : ${OBJS} ${DEPS} Makefile
+    @$(CC) $(OBJS) ${CFLAGS} -Iincludes -o $(NAME)
+
+$(OBJS) : $(OBJSDIR)%.o : $(SRCSDIR)%.c Makefile ./includes/header.h
+    @mkdir -p $(OBJSDIR)
+    @${CC} ${CFLAGS} ${HEADER} -c $< -o $@
+
+fclean : clean
+    @rm -rf ${NAME} $(BIN)
+
+re : fclean all
+
+            </code>
+        </pre>
+    </body>
+</html>
