@@ -21,7 +21,3 @@ ul.contact li:hover a {
     background: rgba(201, 0, 241, 0.452);
     color: rgb(0, 204, 255);
 }
-
-ul.other {
-    list-style-type: none;
-}
